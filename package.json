@@ -1,0 +1,20 @@
+{
+  "name": "foodorder",
+  "version": "1.0.0",
+  "description": "A Food Ordering App",
+  "main": "index.js",
+  "scripts": {
+    "start": "src/index",
+    "test": "jtest"
+  },
+  "author": "Vivek Poddar",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
