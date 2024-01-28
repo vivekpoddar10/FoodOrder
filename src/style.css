@@ -1,0 +1,27 @@
+.resturant {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid violet;
+  margin: 10px;
+  padding: 5px;
+}
+
+.food-image {
+  height: 120px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-image > img {
+  height: 100px;
+  width: 100%;
+}
+
+.resturant-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
