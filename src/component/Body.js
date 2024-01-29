@@ -1,30 +1,33 @@
 import { useEffect, useState } from "react";
-import Resturant from "./Resturant";
+import Restaurant from "./Restaurant";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [resturantList, setResturantList] = useState([]);
+  const [restaurantList, setRestaurantList] = useState([]);
+  
 
-  const getResturantList = async () => {
+  const getrestaurantList = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
 
     const jsonData = await data.json();
 
-    setResturantList(
+    setRestaurantList(
       jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
 
-  useEffect(getResturantList, []);
+  useEffect(getrestaurantList, []);
 
-  return (
+
+  return (restaurantList.length === 0) ? <Shimmer/> : (
     <div>
       <div>
         <button
           onClick={() =>
-            setResturantList(
-              resturantList.filter((value) => value.info.avgRating >= 4.5)
+            setRestaurantList(
+              restaurantList.filter((value) => value.info.avgRating >= 4.5)
             )
           }
         >
@@ -32,9 +35,11 @@ const Body = () => {
         </button>
       </div>
 
+      <div></div>
+
       <div className="resturant-list">
-        {resturantList.map((resturant) => (
-          <Resturant info={resturant.info} />
+        {restaurantList.map((resturant) => (
+          <Restaurant info={resturant.info} />
         ))}
       </div>
     </div>
