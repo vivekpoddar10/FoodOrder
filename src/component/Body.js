@@ -13,7 +13,7 @@ const Body = () => {
 
     const jsonData = await data.json();
 
-    setResturantList(
+    setRestaurantList(
       jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
 
