@@ -1,7 +1,7 @@
 import React from "react";
 import { IMAGE_URL } from "../utils/constant";
 
-const Restaurant = (props) => {
+const Resturant = (props) => {
   const { info } = props;
   const { name, locality, avgRating, costForTwo, cloudinaryImageId, cuisines } =
     info;

@@ -25,13 +25,3 @@
   flex-wrap: wrap;
   width: 100%;
 }
-
-.price-rating {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.shimmer-item {
-  background-color: #f0f0f0;
-}
