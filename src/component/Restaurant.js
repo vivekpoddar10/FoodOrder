@@ -12,8 +12,9 @@ const Restaurant = (props) => {
       </div>
       <div className="resturant-name">{name}</div>
       <div className="resturant-address">{locality}</div>
-      <div className="food-cuisine">{
-      cuisines.filter((value, index) => index < 3).join()}...</div>
+      <div className="food-cuisine">
+        {cuisines.filter((value, index) => index < 3).join()}...
+      </div>
       <div className="price-rating">
         <div className="price">{costForTwo}</div>
         <div className="rating">{avgRating}⭐</div>
