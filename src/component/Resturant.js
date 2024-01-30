@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGE_URL } from "../utils/constant";
+import { IMAGE_URL } from "../../utils/constant";
 
 const Resturant = (props) => {
   const { info } = props;
