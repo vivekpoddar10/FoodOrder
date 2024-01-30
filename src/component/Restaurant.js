@@ -1,7 +1,7 @@
 import React from "react";
-import { IMAGE_URL } from "../../utils/constant";
+import { IMAGE_URL } from "../utils/constant";
 
-const Resturant = (props) => {
+const Restaurant = (props) => {
   const { info } = props;
   const { name, locality, avgRating, costForTwo, cloudinaryImageId, cuisines } =
     info;
@@ -22,4 +22,4 @@ const Resturant = (props) => {
   );
 };
 
-export default Resturant;
+export default Restaurant;
