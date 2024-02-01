@@ -6,9 +6,9 @@ const Body = () => {
   const [filterRestaurantList, setFilterRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
   /**
-   * TODO: A async function which will fetch data from api, convert them into json, and store the desired information inside state varaible
+   * TODO: A async function which will fetch data from api, convert them into json, and store the desired information inside state variable
    */
-  const getResturantList = async () => {
+  const getRestaurantList = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
@@ -24,10 +24,13 @@ const Body = () => {
     );
   };
 
-  //callback function will be called after initail rendering is done
-  useEffect(getResturantList, []);
+  //callback function will be called after initial rendering is done
+  useEffect(getRestaurantList, []);
 
-  //
+  /**
+   * TODO: filter the restaurant whose name has the characters entered by the user in input box
+   * TODO: update the restaurant list with the filtered restaurant, so that the specific restaurant will be shown
+   */
   const searchRestaurantList = () => {
     const filterRest = filterRestaurantList.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -74,9 +77,9 @@ const Body = () => {
         ></input>
       </div>
 
-      <div className="resturant-list">
-        {filterRestaurantList.map((resturant) => (
-          <Restaurant info={resturant.info} />
+      <div className="restaurant-list">
+        {filterRestaurantList.map((restaurant) => (
+          <Restaurant info={restaurant.info} />
         ))}
       </div>
     </div>

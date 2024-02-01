@@ -1,4 +1,4 @@
-.resturant {
+.restaurant {
   width: 250px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-.resturant-list {
+.restaurant-list {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
