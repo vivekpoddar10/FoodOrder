@@ -25,3 +25,38 @@
   flex-wrap: wrap;
   width: 100%;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.logo-box img {
+  width: 80px;
+}
+
+.navbar > ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar li {
+  padding: 5px;
+  margin: 5px;
+}
+
+.footer{
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+
+.error{
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
