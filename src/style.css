@@ -47,13 +47,18 @@
   margin: 5px;
 }
 
-.footer{
+.navbar li:hover {
+  cursor: pointer;
+  color: #ffcc00;
+}
+
+.footer {
   border: 1px solid black;
   justify-content: center;
   align-items: center;
 }
 
-.error{
+.error {
   height: 400px;
   display: flex;
   flex-direction: column;
