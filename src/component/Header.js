@@ -1,5 +1,5 @@
 import { LOGO_URL } from "../utils/constant";
-import About from "./About";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,9 +9,15 @@ const Header = () => {
       </div>
       <div className="navbar">
         <ul>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
         </ul>
       </div>
     </div>
