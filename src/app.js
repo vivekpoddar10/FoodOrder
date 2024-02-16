@@ -9,6 +9,7 @@ import About from "./component/About";
 import Contact from "./component/Contact";
 import Cart from "./component/Cart";
 import Error from "./component/Error";
+import Restaurant from './component/Restaurant'
 
 const root = ReactDOM.createRoot(document.querySelector("body"));
 
@@ -43,7 +44,10 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
-     
+     {
+      path: '/restaurant',
+      element: <Restaurant/>
+     }
     ],
     errorElement: <Error />,
   },

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Restaurant from "./Restaurant";
+import RestaurantCard from "./RestaurantCard";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -81,7 +81,7 @@ const Body = () => {
 
       <div className="restaurant-list">
         {filterRestaurantList.map((restaurant) => (
-          <Restaurant info={restaurant.info} />
+          <RestaurantCard info={restaurant.info} />
         ))}
       </div>
     </div>
