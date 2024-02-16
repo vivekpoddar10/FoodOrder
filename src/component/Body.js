@@ -5,6 +5,11 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filterRestaurantList, setFilterRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  //callback function will be called after initial rendering is done
+  useEffect(() => {
+    getRestaurantList();
+  }, []);
   /**
    * TODO: A async function which will fetch data from api, convert them into json, and store the desired information inside state variable
    */
@@ -23,9 +28,6 @@ const Body = () => {
       jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
-
-  //callback function will be called after initial rendering is done
-  useEffect(getRestaurantList, []);
 
   /**
    * TODO: filter the restaurant whose name has the characters entered by the user in input box

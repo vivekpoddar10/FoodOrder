@@ -17,7 +17,7 @@ const AppLayout = () => {
     <div>
       <Header />
       <Outlet />
-      <Footer />
+<Footer />
     </div>
   );
 };
@@ -43,6 +43,7 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+     
     ],
     errorElement: <Error />,
   },
