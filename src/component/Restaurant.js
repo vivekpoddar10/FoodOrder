@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import RestaurantInfo from "./RestaurantInfo";
+import RestaurantOffer from "./RestaurantOffer";
+import Carousel from "./Carousel";
+import MenuCategory from "./MenuCategory";
+
 const Restaurant = () => {
   const [restaurantInfo, setRestaurantInfo] = useState("");
-  const [restaurantOffer, setRestaurantOffer] = useState("");
+  const [restaurantOffer, setRestaurantOffer] = useState([]);
   const [restaurantMenu, setRestaurantMenu] = useState([]);
+  const [carousel, setCarousel] = useState([]);
 
   useEffect(() => {
     getRestaurantData();
@@ -15,13 +20,32 @@ const Restaurant = () => {
     );
     const jsonData = await data.json();
     setRestaurantInfo(jsonData.data.cards[0].card.card.info);
-    console.log(jsonData.data);
+    setRestaurantOffer(
+      jsonData.data.cards[1].card.card.gridElements.infoWithStyle.offers
+    );
+    setRestaurantMenu(
+      jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards
+    );
+
+    setCarousel(
+      jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
+        .carousel
+    );
   };
 
   return (
     <div>
-      <h1>This is restaurant page</h1>
-      <RestaurantInfo info={restaurantInfo}/>
+      <RestaurantInfo info={restaurantInfo} />
+      <div className="restaurant-offer-cards">
+        {restaurantOffer.map((offer) => (
+          <RestaurantOffer info={offer.info} />
+        ))}
+      </div>
+          <div className="restaurant-carousel">
+          
+      {carousel.map((item) => (
+        <Carousel info={item.dish.info} />
+      ))}</div>
     </div>
   );
 };
