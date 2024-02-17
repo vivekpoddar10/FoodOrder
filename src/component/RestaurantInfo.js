@@ -13,20 +13,23 @@ const RestaurantInfo = (props) => {
     feeDetails,
   } = info;
 
-  return <div className="restaurant-info">
-    <div>
-        <div>{name}</div>
-        <div>
-        {locality}, {city}
+  return (
+    <div className="restaurant-info">
+      <div className="restaurant-info-details">
+        <div className="restaurant-info-name-address">
+          <div className="restaurant-info-name">{name}</div>
+          <div className="restaurant-info-address">
+            {locality}, {city}
+          </div>
         </div>
-    </div>
-    <div className="restaurant-food-image">
-        <img src={IMAGE_URL + cloudinaryImageId}></img>
-    </div>
-    <div>
+        <div className="restaurant-info-food-image">
+          <img src={IMAGE_URL + cloudinaryImageId}></img>
+        </div>
+      </div>
+      <div>
         <div>{cuisines}</div>
+      </div>
     </div>
-</div>;
-
+  );
 };
 export default RestaurantInfo;
