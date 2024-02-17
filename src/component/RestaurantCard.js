@@ -5,6 +5,7 @@ const RestaurantCard = (props) => {
   const { info } = props;
   const { name, locality, avgRating, costForTwo, cloudinaryImageId, cuisines } =
     info;
+  console.log(info);
   return (
     <div className="restaurant">
       <div className="food-image">
@@ -12,9 +13,9 @@ const RestaurantCard = (props) => {
       </div>
       <div className="restaurant-name">{name}</div>
       <div className="restaurant-address">{locality}</div>
-      <div className="food-cuisine">{
-      cuisines.filter((value, index) => index < 3).join()
-      }...</div>
+      <div className="food-cuisine">
+        {cuisines.filter((value, index) => index < 3).join()}...
+      </div>
       <div className="price-rating">
         <div className="price">{costForTwo}</div>
         <div className="rating">{avgRating}⭐</div>
