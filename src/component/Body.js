@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -20,13 +21,22 @@ const Body = () => {
 
     const jsonData = await data.json();
 
-    setRestaurantList(
-      jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
+    /**
+     * setRestaurantList takes only parameter, if we want to pass multiple array we have to concatenate them internally
+     */
+    setRestaurantList([
+      ...jsonData.data.cards[1].card.card.gridElements.infoWithStyle
+        .restaurants,
+      ...jsonData.data.cards[4].card.card.gridElements.infoWithStyle
+        .restaurants,
+    ]);
 
-    setFilterRestaurantList(
-      jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
+    setFilterRestaurantList([
+      ...jsonData.data.cards[1].card.card.gridElements.infoWithStyle
+        .restaurants,
+      ...jsonData.data.cards[4].card.card.gridElements.infoWithStyle
+        .restaurants,
+    ]);
   };
 
   /**
@@ -81,7 +91,11 @@ const Body = () => {
 
       <div className="restaurant-list">
         {filterRestaurantList.map((restaurant) => (
-          <RestaurantCard info={restaurant.info} />
+          <Link 
+          key={restaurant.info.id}
+          to={"/restaurant/" + restaurant.info.id}>
+            <RestaurantCard info={restaurant.info} />
+          </Link>
         ))}
       </div>
     </div>

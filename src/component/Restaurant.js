@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import RestaurantInfo from "./RestaurantInfo";
 import RestaurantOffer from "./RestaurantOffer";
 import RestaurantMenu from "./RestaurantMenu";
+import { MENU_ITEMS } from "../utils/constant";
 
 const Restaurant = () => {
   const [restaurantInfo, setRestaurantInfo] = useState("");
@@ -14,13 +17,15 @@ const Restaurant = () => {
 
   const [vegFilterCheck, setVegFilterCheck] = useState(true);
 
+  const { resId } = useParams();
+
   useEffect(() => {
     getRestaurantData();
   }, []);
 
   const getRestaurantData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=23.022505&lng=72.5713621&restaurantId=52630&catalog_qa=undefined&submitAction=ENTER"
+      MENU_ITEMS + resId
     );
     const jsonData = await data.json();
 
@@ -32,7 +37,7 @@ const Restaurant = () => {
 
     setCarousel(
       jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .carousel
+        .itemCards
     );
     setMeal(
       jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[5].card.card
@@ -41,7 +46,7 @@ const Restaurant = () => {
 
     setVegCarousel(
       jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .carousel
+        .itemCards
     );
 
     setVegMeal(
@@ -68,7 +73,7 @@ const Restaurant = () => {
                 setCarousel(
                   vegCarousel.filter(
                     (item) =>
-                      item.dish.info.itemAttribute.vegClassifier === "VEG"
+                      item.card.info.itemAttribute.vegClassifier === "VEG"
                   )
                 );
                 setMeal(
@@ -90,7 +95,7 @@ const Restaurant = () => {
       <div className="restaurant-carousel">
         <h3>Carousel</h3>
         {carousel.map((item) => (
-          <RestaurantMenu info={item.dish.info} />
+          <RestaurantMenu info={item.card.info} />
         ))}
       </div>
       <div>
