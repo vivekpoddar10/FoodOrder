@@ -97,28 +97,22 @@
   font-size: 2.5rem;
 }
 
+/* offers */
 .restaurant-offer-cards {
   display: flex;
-  width: 60%;
   justify-content: center;
-  margin-left: 20%;
-
   padding: 2px;
 }
 
 .restaurant-offer {
+  display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: #f5e8dd;
   border: 1px solid black;
   border-radius: 5px;
-  display: flex;
   margin: 2px;
   padding: 2px;
-  width: auto;
 }
-
-
 
 .restaurant-offer-details {
   display: flex;
@@ -139,15 +133,16 @@
 .restaurant-offer-desc {
   color: #e78895;
   font-size: 12px;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .restaurant-carousel {
-  
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 60%;
-  margin-left: 20%;
 }
 
 .carousel {
@@ -158,22 +153,34 @@
   width: 100%;
 }
 
+.carousel-image-div {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .carousel-image {
-  width: 100px;
+  width: 70px;
 }
 
 .carousel-food-details {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 70%;
 }
-.price-details {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid red;
-  padding: 2px;
-  margin: 2px;
 
-  width: 10%;
+.carousel-food-desc {
+  font-size: 12px;
+}
+
+.carousel-price-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 15%;
+}
+
+.carousel-price-offer-coupon {
+  font-size: 12px;
 }
