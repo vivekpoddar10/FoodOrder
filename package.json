@@ -4,14 +4,16 @@
   "description": "A Food Ordering App",
   "main": "index.js",
   "scripts": {
-    "start": "src/index",
+    "start": "parcel src/index.html",
     "test": "jtest"
   },
   "author": "Vivek Poddar",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.11.0",
-    "process": "^0.11.10"
+    "postcss": "^8.4.35",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.1"
   },
   "dependencies": {
     "react": "^18.2.0",

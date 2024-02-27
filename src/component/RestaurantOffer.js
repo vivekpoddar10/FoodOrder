@@ -3,12 +3,14 @@ const RestaurantOffer = (props) => {
   const { description, header, couponCode } = info;
 
   return (
-    <div className="restaurant-offer">
-      <div className="restaurant-offer-details">
-        <div className="restaurant-offer-header">{header}</div>
-        <div className="restaurant-offer-coupon">{couponCode}</div>
+    <div className="flex m-2 w-1/10 justify-between border rounded-lg">
+      <div className="flex flex-col justify-center mx-2">
+        <div className="">{header}</div>
+        <div className="text-sm">{couponCode}</div>
       </div>
-      <div className="restaurant-offer-desc">{description}</div>
+      <div className="flex items-center mx-2">
+        {description}
+      </div>
     </div>
   );
 };
