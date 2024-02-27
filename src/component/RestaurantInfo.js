@@ -14,20 +14,15 @@ const RestaurantInfo = (props) => {
   } = info;
 
   return (
-    <div className="restaurant-info">
-      <div className="restaurant-info-details">
-        <div className="restaurant-info-name-address">
-          <div className="restaurant-info-name">{name}</div>
-          <div className="restaurant-info-address">
-            {locality}, {city}
-          </div>
-        </div>
-        <div className="restaurant-info-food-image">
-          <img src={IMAGE_URL + cloudinaryImageId}></img>
+    <div className="flex justify-between p-5 w-2/4">
+      <div className="flex flex-col mx-5">
+        <div className="text-xl mb-3">{name}</div>
+        <div className="text-sm">
+          {locality}, {city}
         </div>
       </div>
-      <div>
-        <div>{cuisines}</div>
+      <div className="restaurant-info-food-image mx-5">
+        <img src={IMAGE_URL + cloudinaryImageId} className="w-[100px]"></img>
       </div>
     </div>
   );
