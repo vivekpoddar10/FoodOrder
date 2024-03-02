@@ -28,7 +28,7 @@ const Restaurant = () => {
       </div>
 
       <div className="border flex flex-col justify-center items-center">
-        {menu.map((item) => (
+      {menu.map((item) => (
           <RestaurantMenu info={item.card.info} />
         ))}
       </div>

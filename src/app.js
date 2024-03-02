@@ -8,12 +8,13 @@ import Body from "./component/Body";
 import Contact from "./component/Contact";
 import Cart from "./component/Cart";
 import Error from "./component/Error";
-import Restaurant from "./component/Restaurant";
+
 
 const root = ReactDOM.createRoot(document.querySelector("body"));
 
 //lazy loading / dynamic import/ code chunking/ code spiting
 const About = lazy(() => import("./component/About"));
+const Restaurant = lazy(() => import('./component/Restaurant'))
 
 const AppLayout = () => {
   return (
@@ -52,7 +53,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/restaurant/:resId",
-        element: <Restaurant />,
+        element: (
+          <Suspense fallback={<h1>Loading restaurant page</h1>}>
+            <Restaurant/>
+          </Suspense>
+        ),
       },
     ],
     errorElement: <Error />,
