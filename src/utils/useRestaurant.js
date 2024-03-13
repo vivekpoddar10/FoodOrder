@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MENU_API } from "./constant";
+import { MENU_API, ITEM_CATEGORY } from "./constant";
 
 const useRestaurant = (resId) => {
   const [resInfo, setResInfo] = useState([]);
@@ -15,10 +15,13 @@ const useRestaurant = (resId) => {
         throw new Error("No Data Found");
       }
       const jsonData = await data.json();
+
       setResInfo([
         jsonData.data.cards[0].card.card.info,
         jsonData.data.cards[1].card.card.gridElements.infoWithStyle.offers,
-        jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards,
+        jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
+          (e) => e.card.card["@type"] === ITEM_CATEGORY
+        ),
       ]);
     } catch (error) {}
   };

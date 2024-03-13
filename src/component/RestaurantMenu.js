@@ -7,18 +7,18 @@ const RestaurantMenu = (props) => {
     name,
     itemAttribute,
     offerTags,
-    price=8500,
+    price = 8500,
   } = info;
 
   return (
-    <div className="flex border m-2 p-2 w-[900px]">
+    <div className="flex p-2 w-full border-b">
       <div className="mr-2">
         <img src={IMAGE_URL + imageId} className="w-[100px]"></img>
       </div>
       <div className="flex flex-col w-4/5">
         <div>{name}</div>
         <div>{description}</div>
-        <div>{itemAttribute.vegClassifier}</div>
+        <div>{itemAttribute?.vegClassifier}</div>
       </div>
 
       <div className="flex flex-col justify-center items-center w-1/6">
