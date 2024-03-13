@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { LabelRestaurantCard } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../utils/useRestaurantList";
 
@@ -7,7 +7,8 @@ const Body = () => {
   const restList = useRestaurantList();
   const [filterList, setFilterList] = useState([]);
   const [filterClick, setFilterClick] = useState(true);
-  const [searchValue, setSearchValue] = useState("");
+
+  const RestaurantCardLabeled = LabelRestaurantCard(RestaurantCard);
 
   useEffect(() => {
     setFilterList(restList);
@@ -15,18 +16,6 @@ const Body = () => {
 
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          placeholder="search restaurant"
-          value={searchValue}
-          onChange={(e) => {
-            setSearchValue(searchValue + e.target.value);
-            console.log(searchValue);
-          }}
-        ></input>
-      </div>
-
       <div>
         <button
           onClick={() => {
@@ -41,6 +30,7 @@ const Body = () => {
               setFilterClick(true);
             }
           }}
+          className="bg-grey rounded-md"
         >
           Top Rated
         </button>
@@ -52,7 +42,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            <RestaurantCard info={restaurant.info} />
+            {restaurant.info.veg ? (
+              <RestaurantCardLabeled info={restaurant.info} />
+            ) : (
+              <RestaurantCard info={restaurant.info} />
+            )}
           </Link>
         ))}
       </div>

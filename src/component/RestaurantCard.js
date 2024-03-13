@@ -14,17 +14,30 @@ const RestaurantCard = (props) => {
           className="w-[200px] h-[120px] rounded-xl"
         ></img>
       </div>
-      <div className="restaurant-name">{name}</div>
-      <div className="restaurant-address">{locality}</div>
-      <div className="food-cuisine">
+      <div className="">{name}</div>
+      <div className="">{locality}</div>
+      <div className="">
         {cuisines.filter((value, index) => index < 3).join()}...
       </div>
-      <div className="price-rating">
-        <div className="price">{costForTwo}</div>
-        <div className="rating">{avgRating}⭐</div>
+      <div className="">
+        <div className="">{costForTwo}</div>
+        <div className="">{avgRating}⭐</div>
       </div>
     </div>
   );
+};
+
+export const LabelRestaurantCard = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-green text-white m-2 p-2 rounded-sm">
+          VEG
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
