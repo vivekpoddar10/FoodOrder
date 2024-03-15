@@ -2,15 +2,13 @@ import { useState } from "react";
 import RestaurantMenu from "./RestaurantMenu";
 
 const RestaurantMenuCategory = (props) => {
-  const { item } = props;
-  const [isCategorySelected, setIsCategorySelected] = useState(false);
+  const { item, showCategoryItems, isCategorySelected } = props;
   return (
     <div className="w-full flex flex-col border m-2">
       <div
         className="border bg-gray-50 flex justify-between"
         onClick={() => {
-          setIsCategorySelected(!isCategorySelected);
-          console.log(isCategorySelected);
+          showCategoryItems();
         }}
       >
         <div>{`${item.card.card.title} (${item.card.card.itemCards.length})`}</div>

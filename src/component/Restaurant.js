@@ -11,8 +11,7 @@ const Restaurant = () => {
   const { resId } = useParams();
   const resInfo = useRestaurant(resId);
 
-  const [isItemCategorySelected, setIsItemCategorySelected] = useState(false);
-  const [menuSelected, setMenuSelected] = useState();
+  const [categorySelected, setCategorySelected] = useState(-1);
 
   if (resInfo.length === 0) {
     return <h1>loading data</h1>;
@@ -33,8 +32,14 @@ const Restaurant = () => {
       </div>
 
       <div className="w-6/12 m-auto flex flex-col justify-center items-center">
-        {menu.map((item) => (
-          <RestaurantMenuCategory key={item.card.card.title} item={item} />
+        {menu.map((item, index) => (
+          // controlled component
+          <RestaurantMenuCategory
+            key={item.card.card.title}
+            item={item}
+            isCategorySelected={index === categorySelected ? true : false}
+            showCategoryItems={() => setCategorySelected(index)}
+          />
         ))}
       </div>
 
