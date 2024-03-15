@@ -5,6 +5,7 @@ import RestaurantInfo from "./RestaurantInfo";
 import RestaurantOffer from "./RestaurantOffer";
 import RestaurantMenu from "./RestaurantMenu";
 import { useState } from "react";
+import RestaurantMenuCategory from "./RestaurantMenuCategory";
 
 const Restaurant = () => {
   const { resId } = useParams();
@@ -32,32 +33,8 @@ const Restaurant = () => {
       </div>
 
       <div className="w-6/12 m-auto flex flex-col justify-center items-center">
-        {menu.map((item, index) => (
-          <div className="w-full flex flex-col border m-2">
-            <div
-              className="border bg-gray-50 flex justify-between"
-              onClick={() => {
-                setMenuSelected(index);
-                isItemCategorySelected
-                  ? setIsItemCategorySelected(false)
-                  : setIsItemCategorySelected(true);
-              }}
-            >
-              <span>{`${item.card.card.title} (${item.card.card.itemCards.length})`}</span>
-              <span>⬇️</span>
-            </div>
-            <div
-              className={
-                menuSelected === index && isItemCategorySelected
-                  ? "block"
-                  : "hidden"
-              }
-            >
-              {item.card.card.itemCards.map((item) => (
-                <RestaurantMenu info={item.card.info} />
-              ))}
-            </div>
-          </div>
+        {menu.map((item) => (
+          <RestaurantMenuCategory key={item.card.card.title} item={item} />
         ))}
       </div>
 

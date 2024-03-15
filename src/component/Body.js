@@ -36,7 +36,7 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap m-auto">
         {filterList.map((restaurant) => (
           <Link
             key={restaurant.info.id}
