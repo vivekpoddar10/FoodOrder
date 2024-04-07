@@ -15,11 +15,10 @@ const useRestaurant = (resId) => {
         throw new Error("No Data Found");
       }
       const jsonData = await data.json();
-
       setResInfo([
-        jsonData.data.cards[0].card.card.info,
-        jsonData.data.cards[1].card.card.gridElements.infoWithStyle.offers,
-        jsonData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
+        jsonData.data.cards[2].card.card.info,
+        jsonData.data.cards[3].card.card.gridElements.infoWithStyle.offers,
+        jsonData.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter(
           (e) => e.card.card["@type"] === ITEM_CATEGORY
         ),
       ]);

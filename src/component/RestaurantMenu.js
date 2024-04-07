@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { IMAGE_URL } from "../utils/constant";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 const RestaurantMenu = (props) => {
   const { info } = props;
   const {
@@ -11,7 +13,8 @@ const RestaurantMenu = (props) => {
     price = 8500,
   } = info;
 
-  const [counter, setCounter] = useState(0);
+  // trigger an action to update the cart slice
+  const dispatchAction = useDispatch();
 
   return (
     <div className="flex p-2 w-full justify-between border-b-2 border-gray-300">
@@ -29,40 +32,14 @@ const RestaurantMenu = (props) => {
 
       <div className="mr-2 flex flex-col items-center justify-center w-2/12">
         <img src={IMAGE_URL + imageId} className="w-[100px] my-0"></img>
-        {counter === 0 ? (
-          <button
-            className={` bg-white text-green-500 rounded-md border border-gray-300 hover:border-green-500 cursor-pointer px-6 m-2`}
-            onClick={() => {
-              setCounter(1);
-            }}
-          >
-            Add
-          </button>
-        ) : (
-          <div
-            className={`flex justify-between bg-white text-green-500 rounded-md border border-gray-300 m-2`}
-          >
-            <div
-              className="w-1/4 mx-2 cursor-pointer"
-              onClick={() => {
-                if (counter > 0) {
-                  setCounter(counter - 1);
-                }
-              }}
-            >
-              <button>-</button>
-            </div>
-            <div className="w-1/2">{counter}</div>
-            <div
-              className="w-1/4 mx-2 cursor-pointer"
-              onClick={() => {
-                setCounter(counter + 1);
-              }}
-            >
-              <button>+</button>
-            </div>
-          </div>
-        )}
+        <button
+          className={` bg-white text-green-500 rounded-md border border-gray-300 hover:border-green-500 cursor-pointer px-6 m-2`}
+          
+          //calling the reducer function
+          onClick={() => dispatchAction(addItem(props))}
+        >
+          Add
+        </button>
       </div>
     </div>
   );
