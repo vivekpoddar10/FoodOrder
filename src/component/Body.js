@@ -1,48 +1,33 @@
-import { useEffect, useState } from "react";
+import {useContext } from "react";
 import RestaurantCard, { LabelRestaurantCard } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../utils/useRestaurantList";
 
-const Body = () => {
-  const restList = useRestaurantList();
-  const [filterList, setFilterList] = useState([]);
-  const [filterClick, setFilterClick] = useState(true);
+import UserContext from "../utils/UserContext";
 
+const Body = () => {
+  const [restList] = useRestaurantList();
+  const { setUserName } = useContext(UserContext);
   const RestaurantCardLabeled = LabelRestaurantCard(RestaurantCard);
 
-  useEffect(() => {
-    setFilterList(restList);
-  }, [restList]);
-
   return (
-    <div>
+    <div className="flex flex-col">
       <div>
-        <button
-          onClick={() => {
-            const topRated = restList.filter(
-              (res) => res.info.avgRating >= 4.5
-            );
-            if (filterClick) {
-              setFilterList(topRated);
-              setFilterClick(false);
-            } else {
-              setFilterList(restList);
-              setFilterClick(true);
-            }
-          }}
-          className="bg-grey rounded-md"
-        >
-          Top Rated
-        </button>
+        <label>User name: </label>
+        <input
+          type="text"
+          className="p-2 border"
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
 
-      <div className="flex flex-wrap m-auto">
-        {filterList.map((restaurant) => (
+      <div className="flex flex-wrap justify-center">
+        {restList.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            {restaurant.info.totalRatingsString === '5K+' ? (
+            {restaurant.info.totalRatingsString === "5K+" ? (
               <RestaurantCardLabeled info={restaurant.info} />
             ) : (
               <RestaurantCard info={restaurant.info} />
