@@ -1,12 +1,24 @@
-import { useContext } from "react";
-import UserContext from "../utils/UserContext";
 const Contact = () => {
-  const data = useContext(UserContext);
   return (
     <div>
-      <h1>This is contact page</h1>
-      <h2>{data.name}</h2>
-      <h2>{data.email}</h2>
+      <h2>This is contact page</h2>
+      <form className="flex flex-col w-6/12 m-auto">
+        <input
+          className="border rounded-lg my-2 p-2"
+          type="text"
+          placeholder="name"
+          required
+        />
+        <input
+          className="border rounded-lg h-[100px] my-2 px-2"
+          type="text"
+          placeholder="message"
+          required
+        />
+        <button className="border rounded-2xl bg-blue-600 text-white justify-center my-2">
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

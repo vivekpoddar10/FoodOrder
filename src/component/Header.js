@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
-import { UseSelector, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const { loggedInUser } = useContext(UserContext);
@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className="flex justify-between  m-2">
       <div className="logo-box">
-        <img src={LOGO_URL} className="w-14"></img>
+        <img src={LOGO_URL} alt="logo" className="w-14"></img>
       </div>
       <div>
         <ul className="flex items-center size-full">

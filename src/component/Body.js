@@ -6,7 +6,7 @@ import useRestaurantList from "../utils/useRestaurantList";
 import UserContext from "../utils/UserContext";
 
 const Body = () => {
-  const [restList] = useRestaurantList();
+  const restList = useRestaurantList();
   const { setUserName } = useContext(UserContext);
   const RestaurantCardLabeled = LabelRestaurantCard(RestaurantCard);
 
@@ -22,7 +22,7 @@ const Body = () => {
       </div>
 
       <div className="flex flex-wrap justify-center">
-        {restList.map((restaurant) => (
+        {restList?.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
